@@ -1,0 +1,84 @@
+Docker e Docker Compose do zero ao Deploy
+
+Docker - Containers
+Um container é um padrão de unidade de software que empacota código e todas as dependencias de uma aplicacao fazendo que a mesma seja executada rapidamente de forma confiavel de um ambiente computacional para o outro.
+Uma base de codigo que roda independente do ambiente computacional.
+
+Containers vs VMs
+
+Maquinas virtuais - Sistema operacional
+
+Diferente das VMS os containers trabalha de forma diferente, porque tem o Docker.
+O docker tem o host que consegue gerenciar os containers.
+os Containers sao extremamente leves, com foco em rodar a aplicacao, independente do sistema operacional.
+
+Como funcionam os Containers
+Sistema Operacional, e nesse sistema tem um monte de processo.
+
+Todos os containers sao baseados em imagem. 
+(Scratch é uma imagem zerada)
+Uma imagem é um conjunto de diversos pedaços.
+
+Criar imagem = arquivo Dockerfile.
+Faz uma definição para definir o que quer na imagem.
+Faz os comandos no terminal
+Expoe em uma porta
+
+FROM: ImageName
+RUN: Comandos ex: apt-get install
+EXPOSE: 8000
+
+Faz o Build.
+
+E gera a imagem que tem o estado imutável.
+
+Quando se fala em containers, se fala em processos.
+Cada container é um conjunto de processos.
+Esse processo é dividido em 3 partes: 
+
+Namespaces (colocar o processo dentro do namespace) - isola os processos na máquina
+Cgroups = controla os recursos do computador
+File System = OFS (Overlay File System) trabalha em camadas (reaproveita chunks, pedaços de codigos de outros containers)
+
+Isso é diferente de máquinas virtuais.
+
+Todo container que esta no ar, subiu através de uma image.
+Essa image é imutável (estado imutável)
+Quando sobe um container, sobe baseado na imagem, mas tem uma camada, chamada Read / Write.
+Essa camada permite que voce acesse o container, rode arquivos e le arquivos pro container funcionar.
+Se derrubar esse container, todas essas informações vão ser perdidas.
+Essa camada é uma camada de arquivos temporários.
+
+Aonde fica as imagens?
+Fica em uma espécie de github, um repositório que armazena todas as imagens.
+
+Como o Docker funciona?
+Ele é divido em algumas partes: 
+- Docker Host (principal docker) ele tem um daemon e fornece uma API para conseguir falar com o Host
+Todas as vezes que roda algum comando, docker run ... docker exect .. docker ps
+Aquele comando roda um Docker Client, que se conecta com o Docker Host.
+Através disso vc cria containers, roda o run, pull, push, volumes, network.
+
+O Docker Host tem um Cache e é baixado do Registry.
+Através desse cache que consegue trabalhar para rodar as imagens.
+
+O Docker Host também tem um gerenciamento de Volumes.
+Compartilha volumes do container para o computador. -> Os containers são imutáveis e quando morre, tudo se perde.
+Quando se compartilha volumes, não se perde.
+
+O Docker Host tem também os Networks -> para que um container consiga se conectar com outro container.
+
+
+
+
+created_at:"2022-11-02T12:00:00"
+description:"TESTANDO APPROACH MARIANAAAAAA"
+follow_up:"2022-11-03T12:00:00"
+
+
+
+
+
+
+
+

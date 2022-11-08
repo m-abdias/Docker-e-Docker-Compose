@@ -50,3 +50,20 @@ docker build -t marianaabdias/estudo-docker .
 # executar a imagem
 docker run marianaabdias/estudo-docker:latest
 docker run -p 8080:8080 marianaabdias/estudo-docker:latest
+
+docker push marianaabdias/estudo-docker:latest # para subir a imagem para o docker hub
+
+# garante que todo mundo que esta trabalhando no projeto vai ter o mesmo ambiente de desenvolvimento.
+# as vezes precisa de mais de um container para a imagem rodar
+# docker compose, gerencia diversos containers dockers, através de um único arquivo
+# cria o arquivo:
+docker-compose.yaml
+
+## para rodar o docker compose
+docker-compose up # busca esse arquivo docker-compose.yaml
+docker-compose up -d # roda tudo independendo de parar o terminal
+
+docker-compose down # mata tudo que ta rodando
+
+## fazer deploy aws com "firegatwa" / colocar containers na cloud
+
